@@ -1,430 +1,142 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html dir="rtl" lang="ar">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Afllm Taha | مشاهدة الأفلام</title>
-    <!-- Font Awesome 6 (مجاني) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر الخدمات الرقمية - شحن وبطاقات وتصميم</title>
+    <!-- إطار CSS لتسريع التصميم (اختياري) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Tajawal', 'Segoe UI', system-ui, sans-serif;
-        }
-
-        body {
-            background: linear-gradient(145deg, #0a0f1e 0%, #0c1222 100%);
-            color: #eee;
-            line-height: 1.5;
-        }
-
-        /* شريط التمرير الجميل */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #1e1e2f;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #e50914;
-            border-radius: 10px;
-        }
-
-        /* الهيدر */
-        .header {
-            background: rgba(5, 8, 18, 0.85);
-            backdrop-filter: blur(12px);
-            padding: 1rem 2rem;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(229, 9, 20, 0.4);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .logo h1 {
-            font-size: 2rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #fff, #e50914);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: -0.5px;
-        }
-        .logo span {
-            font-size: 0.8rem;
-            color: #aaa;
-            display: block;
-        }
-        .search-box {
-            background: #1f1f2e;
-            border-radius: 40px;
-            padding: 0.5rem 1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .search-box input {
-            background: transparent;
-            border: none;
-            color: white;
-            font-size: 1rem;
-            outline: none;
-            width: 200px;
-        }
-        .search-box button {
-            background: none;
-            border: none;
-            color: #e50914;
-            cursor: pointer;
-            font-size: 1.2rem;
-        }
-
-        /* الحاوية الرئيسية */
-        .container {
-            max-width: 1400px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
-        }
-
-        /* الفئات */
-        .categories {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-            justify-content: center;
-        }
-        .cat-btn {
-            background: #1f1f2e;
-            border: none;
-            color: #ddd;
-            padding: 0.5rem 1.5rem;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: 0.2s;
-            font-weight: bold;
-        }
-        .cat-btn.active, .cat-btn:hover {
-            background: #e50914;
-            color: white;
-            box-shadow: 0 0 10px #e50914;
-        }
-
-        /* شبكة الأفلام */
-        .movies-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-            gap: 1.8rem;
-            margin-bottom: 3rem;
-        }
-        .movie-card {
-            background: #141824;
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: 1px solid #2a2a3a;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-        }
-        .movie-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            border-color: #e50914;
-            box-shadow: 0 20px 30px rgba(229,9,20,0.2);
-        }
-        .poster {
-            position: relative;
-            height: 280px;
-            overflow: hidden;
-        }
-        .poster img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s;
-        }
-        .movie-card:hover .poster img {
-            transform: scale(1.05);
-        }
-        .movie-info {
-            padding: 1rem;
-        }
-        .movie-title {
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-bottom: 0.3rem;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .movie-year {
-            color: #e50914;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-        .watch-btn {
-            background: #e50914;
-            border: none;
-            color: white;
-            width: 100%;
-            padding: 0.5rem;
-            margin-top: 0.7rem;
-            border-radius: 40px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.2s;
-            font-size: 0.9rem;
-        }
-        .watch-btn:hover {
-            background: #b00710;
-        }
-
-        /* مشغل الفيديو */
-        .player-section {
-            background: #0b0e16;
-            border-radius: 30px;
-            padding: 1rem;
-            margin-top: 2rem;
-            border: 1px solid #2c2c3e;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-        }
-        .player-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            padding: 0.5rem 1rem;
-            border-bottom: 1px solid #2a2a3a;
-            margin-bottom: 1rem;
-        }
-        .player-header h3 {
-            font-size: 1.2rem;
-        }
-        .player-header span {
-            color: #e50914;
-            font-size: 0.8rem;
-        }
-        .video-container {
-            background: #000;
-            border-radius: 20px;
-            overflow: hidden;
-            aspect-ratio: 16 / 9;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        video {
-            width: 100%;
-            height: 100%;
-            outline: none;
-        }
-        .placeholder-player {
-            text-align: center;
-            color: #aaa;
-            padding: 3rem;
-        }
-        .disclaimer {
-            text-align: center;
-            font-size: 0.75rem;
-            color: #888;
-            margin-top: 2rem;
-            padding: 1rem;
-            border-top: 1px solid #222;
-        }
-        @media (max-width: 700px) {
-            .header {
-                flex-direction: column;
-                gap: 10px;
-            }
-            .movies-grid {
-                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            }
-            .poster {
-                height: 220px;
-            }
-        }
-        footer {
-            text-align: center;
-            padding: 1.5rem;
-            color: #6c6f7e;
-        }
+        body { background-color: #f4f7fc; font-family: 'Tajawal', sans-serif; }
+        .service-card { border-radius: 15px; transition: transform 0.2s; border: none; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .service-card:hover { transform: translateY(-5px); }
+        .category-badge { background-color: #0d6efd; color: white; padding: 5px 12px; border-radius: 30px; font-size: 14px; }
     </style>
 </head>
 <body>
 
-<div class="header">
-    <div class="logo">
-        <h1>Afllm Taha <i class="fas fa-film"></i></h1>
-        <span>جميع الأفلام في مكان واحد</span>
-    </div>
-    <div class="search-box">
-        <input type="text" id="searchInput" placeholder="ابحث عن فيلم...">
-        <button id="searchBtn"><i class="fas fa-search"></i></button>
-    </div>
-</div>
-
-<div class="container">
-    <!-- أزرار التصنيف -->
-    <div class="categories" id="categoriesContainer">
-        <button class="cat-btn active" data-cat="all">الكل</button>
-        <button class="cat-btn" data-cat="اكشن">أكشن</button>
-        <button class="cat-btn" data-cat="دراما">دراما</button>
-        <button class="cat-btn" data-cat="كوميدي">كوميدي</button>
-        <button class="cat-btn" data-cat="خيال علمي">خيال علمي</button>
-    </div>
-
-    <!-- شبكة الأفلام (بيانات وهمية) -->
-    <div class="movies-grid" id="moviesGrid"></div>
-
-    <!-- مشغل الفيديو التجريبي -->
-    <div class="player-section">
-        <div class="player-header">
-            <h3><i class="fas fa-play-circle"></i> المشغل الذهبي</h3>
-            <span>Afllm Taha Player</span>
-        </div>
-        <div class="video-container" id="videoPlayerContainer">
-            <div class="placeholder-player">
-                <i class="fas fa-film" style="font-size: 3rem; opacity: 0.5;"></i>
-                <p>اضغط على "مشاهدة" في أي فيلم لتشغيله<br>⚠️ هذا عرض توضيحي، قم باستبدال رابط الفيديو الحقيقي</p>
+    <!-- شريط التنقل العلوي -->
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm p-3 mb-4">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="#">⚡ الخدمات السريعة</a>
+            <div class="d-flex">
+                <a href="#" class="btn btn-outline-primary mx-2">تسجيل الدخول</a>
+                <a href="#" class="btn btn-primary">سلة المشتريات (0)</a>
             </div>
         </div>
-    </div>
-    <div class="disclaimer">
-        ⚠️ هذا الموقع نموذج تعليمي وعرض لواجهة "Afllm Taha". جميع الأفلام المعروضة وهمية لأغراض التصميم. يمكنك إضافة روابط الأفلام الخاصة بك.
-    </div>
-</div>
-<footer>
-    © 2025 Afllm Taha | استمتع بمشاهدة أفضل الأفلام
-</footer>
+    </nav>
 
-<script>
-    // قائمة الأفلام الوهمية (للعرض فقط) - يمكنك استبدال الصور والروابط لاحقاً
-    const moviesData = [
-        { id: 1, title: "صراع العمالقة", year: "2024", genre: "اكشن", poster: "https://picsum.photos/id/104/300/450", videoUrl: "" },
-        { id: 2, title: "ليلة القبضة", year: "2023", genre: "اكشن", poster: "https://picsum.photos/id/107/300/450", videoUrl: "" },
-        { id: 3, title: "حكاية دراما", year: "2022", genre: "دراما", poster: "https://picsum.photos/id/20/300/450", videoUrl: "" },
-        { id: 4, title: "ضحك في الظلام", year: "2025", genre: "كوميدي", poster: "https://picsum.photos/id/26/300/450", videoUrl: "" },
-        { id: 5, title: "كوكب المجرة", year: "2023", genre: "خيال علمي", poster: "https://picsum.photos/id/29/300/450", videoUrl: "" },
-        { id: 6, title: "الرجل الخارق", year: "2024", genre: "اكشن", poster: "https://picsum.photos/id/155/300/450", videoUrl: "" },
-        { id: 7, title: "ذكريات قلب", year: "2021", genre: "دراما", poster: "https://picsum.photos/id/169/300/450", videoUrl: "" },
-        { id: 8, title: "مهمة سرية", year: "2025", genre: "اكشن", poster: "https://picsum.photos/id/177/300/450", videoUrl: "" },
-        { id: 9, title: "فضائي في القاهرة", year: "2024", genre: "خيال علمي", poster: "https://picsum.photos/id/180/300/450", videoUrl: "" },
-        { id: 10, title: "صديقي المهرج", year: "2023", genre: "كوميدي", poster: "https://picsum.photos/id/36/300/450", videoUrl: "" },
-        { id: 11, title: "الملحمة الأخيرة", year: "2025", genre: "دراما", poster: "https://picsum.photos/id/42/300/450", videoUrl: "" },
-        { id: 12, title: "السرعة القصوى", year: "2024", genre: "اكشن", poster: "https://picsum.photos/id/58/300/450", videoUrl: "" }
-    ];
-
-    let currentCategory = "all";
-    let searchQuery = "";
-
-    // دالة لعرض الأفلام بناءً على التصنيف والبحث
-    function renderMovies() {
-        let filtered = moviesData;
-        if (currentCategory !== "all") {
-            filtered = filtered.filter(movie => movie.genre === currentCategory);
-        }
-        if (searchQuery.trim() !== "") {
-            filtered = filtered.filter(movie => movie.title.includes(searchQuery.trim()));
-        }
-
-        const grid = document.getElementById("moviesGrid");
-        if (filtered.length === 0) {
-            grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:3rem;">😢 لا توجد أفلام تطابق البحث</div>`;
-            return;
-        }
-
-        grid.innerHTML = filtered.map(movie => `
-            <div class="movie-card" data-id="${movie.id}">
-                <div class="poster">
-                    <img src="${movie.poster}" alt="${movie.title}" loading="lazy">
-                </div>
-                <div class="movie-info">
-                    <div class="movie-title">${movie.title}</div>
-                    <div class="movie-year">${movie.year} • ${movie.genre}</div>
-                    <button class="watch-btn" data-id="${movie.id}"><i class="fas fa-play"></i> مشاهدة</button>
+    <!-- المحتوى الرئيسي -->
+    <div class="container">
+        <div class="row mb-5 text-center">
+            <div class="col-12">
+                <h1 class="fw-bold">كل خدماتك الإلكترونية في مكان واحد</h1>
+                <p class="lead text-secondary">شحن رصيد • بطاقات ألعاب • اشتراكات • خدمات مصغرة</p>
+                <div class="input-group w-50 mx-auto my-4">
+                    <input type="text" class="form-control p-3 rounded-4" placeholder="ابحث عن الخدمة... (مثال: ببجي، شحن سوا)">
+                    <button class="btn btn-primary rounded-4 px-4">بحث</button>
                 </div>
             </div>
-        `).join("");
+        </div>
 
-        // إضافة مستمعين لأزرار المشاهدة
-        document.querySelectorAll(".watch-btn").forEach(btn => {
-            btn.addEventListener("click", (e) => {
-                e.stopPropagation();
-                const movieId = parseInt(btn.dataset.id);
-                const movie = moviesData.find(m => m.id === movieId);
-                if (movie) {
-                    playMovie(movie);
-                }
-            });
-        });
-    }
+        <!-- أقسام الخدمات الإلكترونية -->
+        <h3 class="mb-4 fw-bold">📱 خدمات شائعة</h3>
+        <div class="row g-4">
+            
+            <!-- بطاقة خدمة 1: شحن الرصيد -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card service-card h-100">
+                    <div class="card-body text-center p-4">
+                        <span class="category-badge mb-3 d-inline-block">شحن</span>
+                        <img src="https://img.icons8.com/color/96/000000/sim-card.png" width="70" class="mb-3" alt="شحن">
+                        <h5 class="card-title">شحن رصيد سوا</h5>
+                        <p class="text-muted">فوري لجميع الشبكات</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="fw-bold fs-5">20.00 ريال</span>
+                            <a href="#" class="btn btn-sm btn-success">اطلب الآن</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    // وظيفة تشغيل الفيلم (هنا ستضع رابط الفيديو الحقيقي)
-    function playMovie(movie) {
-        const container = document.getElementById("videoPlayerContainer");
-        // مثال: لو كان عندك رابط حقيقي يمكنك وضعه في المصفوفة مسبقاً.
-        // بما أننا نستخدم بيانات وهمية، سأعرض رسالة تفيد بأنه يجب إضافة رابط الفيديو.
-        // ولكن أيضاً سأعرض مشغل فيديو تجريبي يحتوي على عينة توضيحية (فيديو نموذجي من unsplash?)
-        // يمكنك استبدال الرابط التالي بأي فيلم حقيقي.
-        const demoVideoUrl = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"; // فيديو تجريبي قصير
-        // إذا أردت أن يستخدم الفيلم رابطاً خاصاً به (من عندك) أضف خاصية videoUrl لكل فيلم.
-        // سأوضح لك: لو كان movie.videoUrl موجود وغير فارغ استخدمه وإلا استخدم التجريبي.
-        let sourceUrl = demoVideoUrl;
-        if (movie.videoUrl && movie.videoUrl !== "") {
-            sourceUrl = movie.videoUrl;
-        }
+            <!-- بطاقة خدمة 2: بطاقات ألعاب -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card service-card h-100">
+                    <div class="card-body text-center p-4">
+                        <span class="category-badge bg-danger mb-3 d-inline-block">ألعاب</span>
+                        <img src="https://img.icons8.com/color/96/000000/pubg.png" width="70" class="mb-3" alt="ببجي">
+                        <h5 class="card-title">شحن PUBG UC</h5>
+                        <p class="text-muted">توصيل فوري للكود</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="fw-bold fs-5">60.00 ريال</span>
+                            <a href="#" class="btn btn-sm btn-success">اشحن</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- بطاقة خدمة 3: اشتراكات -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card service-card h-100">
+                    <div class="card-body text-center p-4">
+                        <span class="category-badge bg-warning text-dark mb-3 d-inline-block">ترفيه</span>
+                        <img src="https://img.icons8.com/color/96/000000/netflix.png" width="70" class="mb-3" alt="نتفلكس">
+                        <h5 class="card-title">اشتراك نتفلكس شهر</h5>
+                        <p class="text-muted">حساب خاص بجودة 4K</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="fw-bold fs-5">45.00 ريال</span>
+                            <a href="#" class="btn btn-sm btn-success">شراء</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- بطاقة خدمة 4: خدمات مصغرة -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card service-card h-100">
+                    <div class="card-body text-center p-4">
+                        <span class="category-badge bg-info mb-3 d-inline-block">خدمة</span>
+                        <img src="https://img.icons8.com/color/96/000000/design.png" width="70" class="mb-3" alt="تصميم">
+                        <h5 class="card-title">تصميم لوجو احترافي</h5>
+                        <p class="text-muted">تسليم خلال 24 ساعة</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="fw-bold fs-5">150.00 ريال</span>
+                            <a href="#" class="btn btn-sm btn-success">اطلب</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
         
-        container.innerHTML = `
-            <video controls autoplay style="width:100%; height:100%; object-fit: contain;" poster="${movie.poster}">
-                <source src="${sourceUrl}" type="video/mp4">
-                متصفحك لا يدعم تشغيل الفيديو.
-            </video>
-        `;
-        // إضافة رسالة في وحدة التحكم توضيحية
-        if (!movie.videoUrl) {
-            console.log(`تنبيه: فيلم "${movie.title}" ليس له رابط مخصص. تم استخدام فيديو تجريبي. يمكنك إضافة رابط حقيقي عبر خاصية videoUrl.`);
-        }
-    }
+        <!-- قسم مزايا الموقع -->
+        <hr class="my-5">
+        <div class="row text-center g-4">
+            <div class="col-md-4">
+                <div class="p-3 bg-white rounded-4 shadow-sm h-100">
+                    <h5>🚀 توصيل فوري</h5>
+                    <p class="small text-secondary">بطاقات الشحن والكوبونات تصل لبريدك الإلكتروني خلال ثواني.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-3 bg-white rounded-4 shadow-sm h-100">
+                    <h5>💳 دفع آمن</h5>
+                    <p class="small text-secondary">ندعم مدى، فيزا، وماستركارد مع حماية 3D Secure.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-3 bg-white rounded-4 shadow-sm h-100">
+                    <h5>🌐 كل الخدمات</h5>
+                    <p class="small text-secondary">إذا لم تجد خدمتك، راسلنا ونحن نوفرها لك.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    // أحداث البحث والفئات
-    function initEvents() {
-        const searchInput = document.getElementById("searchInput");
-        const searchBtn = document.getElementById("searchBtn");
-        const catBtns = document.querySelectorAll(".cat-btn");
+    <!-- تذييل الصفحة -->
+    <footer class="mt-5 p-4 bg-dark text-white-50 text-center">
+        <p>© 2025 متجر الخدمات الإلكترونية الشامل. جميع الحقوق محفوظة.</p>
+    </footer>
 
-        searchBtn.addEventListener("click", () => {
-            searchQuery = searchInput.value;
-            renderMovies();
-        });
-        searchInput.addEventListener("keyup", (e) => {
-            if (e.key === "Enter") {
-                searchQuery = searchInput.value;
-                renderMovies();
-            }
-        });
-
-        catBtns.forEach(btn => {
-            btn.addEventListener("click", () => {
-                catBtns.forEach(b => b.classList.remove("active"));
-                btn.classList.add("active");
-                currentCategory = btn.dataset.cat;
-                renderMovies();
-            });
-        });
-    }
-
-    // إضافة بعض الأفلام بروابط تجريبية لتوضيح كيف يمكن إضافة روابط حقيقية
-    // مثلاً يمكنك تعديل مصفوفة moviesData وإضافة videoUrl: "رابط فيلمك.mp4"
-    // ولكن هنا سأضيف مثالاً لفيلمين برابط تجريبي فقط لتوضيح الفكرة
-    moviesData[0].videoUrl = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCar.mp4";
-    moviesData[1].videoUrl = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4";
-    // باقي الأفلام تستخدم الفيديو التجريبي الافتراضي (ForBiggerBlazes)
-
-    renderMovies();
-    initEvents();
-</script>
 </body>
 </html>
