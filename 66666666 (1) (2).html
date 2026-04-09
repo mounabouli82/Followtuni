@@ -1,0 +1,310 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طاهر الشهب - Tahalachhab | خدمات السوشيال ميديا</title>
+    <!-- خط جميل وعصري -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+        body {
+            background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #f1f5f9;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        /* الهيدر الرسمي */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 2px solid #fbbf24;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .logo h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #fbbf24;
+            text-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+            letter-spacing: 1px;
+        }
+        .logo span {
+            font-size: 1rem;
+            color: #94a3b8;
+            display: block;
+        }
+        .contact-badge {
+            background: #334155;
+            padding: 12px 25px;
+            border-radius: 50px;
+            border: 1px solid #475569;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .contact-badge i {
+            color: #10b981;
+            margin-left: 5px;
+        }
+        .offer-banner {
+            background: linear-gradient(90deg, #dc2626, #b91c1c);
+            padding: 15px 25px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #ef4444;
+            box-shadow: 0 10px 20px rgba(220, 38, 38, 0.2);
+        }
+        .free-credit {
+            font-size: 2rem;
+            font-weight: 900;
+            background: #fef08a;
+            color: #0f172a;
+            padding: 5px 20px;
+            border-radius: 40px;
+        }
+        .flag {
+            font-size: 1.5rem;
+        }
+        /* بطاقات الخدمات */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        .card {
+            background: #1e293b;
+            border-radius: 24px;
+            padding: 30px 20px;
+            text-align: center;
+            border: 1px solid #334155;
+            backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px -10px #00000080;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #fbbf24;
+            box-shadow: 0 20px 30px -10px #fbbf2433;
+        }
+        .card i {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        .card h3 {
+            font-size: 1.8rem;
+            color: #fbbf24;
+            margin-bottom: 15px;
+        }
+        .price-box {
+            background: #0f172a;
+            padding: 15px;
+            border-radius: 16px;
+            margin: 20px 0;
+            border: 1px dashed #64748b;
+        }
+        .price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        .price small {
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+        .btn {
+            background: #fbbf24;
+            color: #0f172a;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            width: 100%;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 5px 0 #b45309;
+            border: 1px solid #fde68a;
+        }
+        .btn:hover {
+            background: #f59e0b;
+            box-shadow: 0 3px 0 #b45309;
+            transform: translateY(2px);
+        }
+        .whatsapp-btn {
+            background: #25D366;
+            color: #fff;
+            box-shadow: 0 5px 0 #128C7E;
+            margin-top: 10px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            color: #64748b;
+            border-top: 1px solid #334155;
+        }
+        .d17-badge {
+            background: #e11d48;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-weight: bold;
+            display: inline-block;
+            margin: 10px;
+        }
+        /* شريط الرصيد الوهمي (شغل 100/100) */
+        .balance-bar {
+            background: #0f172a;
+            border-radius: 60px;
+            padding: 5px 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid #475569;
+        }
+        .balance-amount {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #fbbf24;
+        }
+    </style>
+    <!-- أيقونات فونت أوسم -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- الهيدر بإسمك ورقمك -->
+        <div class="header">
+            <div class="logo">
+                <h1>TAHALACHHAB</h1>
+                <span><i class="fas fa-badge-check" style="color: #3b82f6;"></i> الموقع الرسمي - تونس</span>
+            </div>
+            <div class="contact-badge">
+                <i class="fas fa-phone-alt"></i> +216 20010811 
+                <span class="d17-badge">D17 شحن</span>
+            </div>
+        </div>
+
+        <!-- عرض 10 دينار مجاناً (وهمي لكن للشكل) -->
+        <div class="offer-banner">
+            <div>
+                <span class="flag"><i class="fas fa-gift"></i></span>
+                <h2 style="display: inline-block; margin-right: 15px;">عرض خاص للأعضاء الجدد</h2>
+            </div>
+            <div class="free-credit">
+                10 د.ت مجاناً
+            </div>
+        </div>
+
+        <!-- شريط الحالة: شغل 100/100 -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <div class="balance-bar">
+                <i class="fas fa-coins" style="color: #fbbf24;"></i>
+                <span style="color: #cbd5e1;">رصيدي الحالي:</span>
+                <span class="balance-amount">10.00 د.ت</span>
+                <span style="color: #10b981;"><i class="fas fa-circle"></i> شغّال 100/100</span>
+            </div>
+            <div>
+                <i class="fas fa-shield-alt" style="color: #10b981;"></i> موقع آمن & رسمي
+            </div>
+        </div>
+
+        <!-- خدمات المتابعين والمشاهدات -->
+        <div class="services-grid">
+            <!-- فيسبوك -->
+            <div class="card">
+                <i class="fab fa-facebook" style="color: #1877F2;"></i>
+                <h3>فيسبوك</h3>
+                <div class="price-box">
+                    <div class="price">1000 <small>متابع</small></div>
+                    <div style="color: #94a3b8;">أو 5000 مشاهدة</div>
+                </div>
+                <button class="btn" onclick="alert('تم نسخ الرقم: 20010811 - تواصل معنا واتساب للطلب')"><i class="fas fa-shopping-cart"></i> أطلب الآن</button>
+            </div>
+            <!-- انستقرام -->
+            <div class="card">
+                <i class="fab fa-instagram" style="color: #E4405F;"></i>
+                <h3>انستقرام</h3>
+                <div class="price-box">
+                    <div class="price">500 <small>متابع</small></div>
+                    <div style="color: #94a3b8;">أو 10k مشاهدة</div>
+                </div>
+                <button class="btn" onclick="alert('تم نسخ الرقم: 20010811 - تواصل معنا واتساب للطلب')"><i class="fas fa-shopping-cart"></i> أطلب الآن</button>
+            </div>
+            <!-- تيك توك -->
+            <div class="card">
+                <i class="fab fa-tiktok" style="color: #000; background: #fff; padding: 5px; border-radius: 10px;"></i>
+                <h3>تيك توك</h3>
+                <div class="price-box">
+                    <div class="price">1000 <small>متابع</small></div>
+                    <div style="color: #94a3b8;">أو 20k مشاهدة</div>
+                </div>
+                <button class="btn" onclick="alert('تم نسخ الرقم: 20010811 - تواصل معنا واتساب للطلب')"><i class="fas fa-shopping-cart"></i> أطلب الآن</button>
+            </div>
+            <!-- يوتيوب -->
+            <div class="card">
+                <i class="fab fa-youtube" style="color: #FF0000;"></i>
+                <h3>يوتيوب</h3>
+                <div class="price-box">
+                    <div class="price">4000 <small>ساعة</small></div>
+                    <div style="color: #94a3b8;">أو 1000 مشترك</div>
+                </div>
+                <button class="btn" onclick="alert('تم نسخ الرقم: 20010811 - تواصل معنا واتساب للطلب')"><i class="fas fa-shopping-cart"></i> أطلب الآن</button>
+            </div>
+        </div>
+
+        <!-- قسم الشحن D17 تونس -->
+        <div style="background: #1e293b; border-radius: 24px; padding: 30px; margin: 40px 0; border: 1px solid #fbbf24;">
+            <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+                <div style="font-size: 4rem;"><i class="fas fa-sim-card"></i></div>
+                <div>
+                    <h2 style="color: #fbbf24; font-size: 2rem;">شحن رصيد D17</h2>
+                    <p style="font-size: 1.2rem;">مشتركي تونس فقط - أسرع خدمة شحن رصيد</p>
+                    <div style="display: flex; gap: 10px; margin-top: 15px;">
+                        <span class="d17-badge" style="background: #1e293b; border: 1px solid #fbbf24;">5 د.ت</span>
+                        <span class="d17-badge" style="background: #1e293b; border: 1px solid #fbbf24;">10 د.ت</span>
+                        <span class="d17-badge" style="background: #1e293b; border: 1px solid #fbbf24;">20 د.ت</span>
+                    </div>
+                </div>
+                <div style="margin-right: auto;">
+                    <button class="btn whatsapp-btn" onclick="window.open('https://wa.me/21620010811', '_blank')">
+                        <i class="fab fa-whatsapp"></i> واتساب مباشر
+                    </button>
+                    <p style="margin-top: 10px; direction: ltr; font-size: 1.5rem; letter-spacing: 2px;">20010811</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- كلمة أخيرة (شغل 100/100) -->
+        <div style="text-align: center; padding: 20px; background: #0f172a; border-radius: 20px;">
+            <i class="fas fa-check-circle" style="color: #10b981; font-size: 2rem;"></i>
+            <h3>الموقع يعمل بكفاءة 100% - جميع الطلبات تتم عبر الواتساب حالياً</h3>
+            <p>عند الضغط على أزرار الشراء يظهر رقمك مباشرة ليتم التواصل معك على واتساب لإتمام عملية الشحن.</p>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 Tahalachhab. Official Website. <i class="fas fa-heart" style="color: #e11d48;"></i> Made in Tunisia</p>
+            <p style="margin-top: 10px;"><i class="fas fa-phone"></i> +216 20010811 | <i class="fas fa-user"></i> Tahalachhab</p>
+        </div>
+    </div>
+
+    <script>
+        // محاكاة بسيطة للرصيد المجاني
+        console.log("مرحباً بك يا طاهر، الرصيد 10 دنانير تظهر بشكل تجريبي في الموقع.");
+    </script>
+</body>
+</html>
